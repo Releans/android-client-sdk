@@ -1,0 +1,22 @@
+# Circle CI should automatically run the tests.
+# For configuration options, visit: https://circleci.com/docs/configuration/
+machine:
+  java:
+    version: oraclejdk7
+dependencies:        
+  cache_directories:
+    - ~/.android
+    - ~/android
+  override:
+    - echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-19.1.0,android-19,extra-google-m2repository,extra-google-google_play_services,extra-android-support
+
+test:
+  pre:
+    - emulator -avd circleci-android22 -no-audio -no-window:
+        background: true
+        parallel: true
+    - circle-android wait-for-boot
+  override:
+    - gradle wrapper
+    - ./gradlew connectedAndroidTest -i
+   

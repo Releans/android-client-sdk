@@ -1,0 +1,9 @@
+<!--
+ - Releans
+ -
+ - This file was automatically generated for Releans by APIMATIC v2.0 ( https://apimatic.io ).
+-->
+<resources>
+    <string name="app_name">Releans</string>
+    <string name="preference_file_key">releans_prefs</string>
+</resources>
